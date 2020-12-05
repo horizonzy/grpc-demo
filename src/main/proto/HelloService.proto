@@ -10,5 +10,5 @@ message HelloResponse {
     string greeting = 1;
 }
 service HelloService {
-    rpc hello(HelloRequest) returns (HelloResponse);
+    rpc hello(stream HelloRequest) returns (HelloResponse);
 }

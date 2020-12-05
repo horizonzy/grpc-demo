@@ -8,13 +8,26 @@ import io.grpc.stub.StreamObserver;
 public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
 
     @Override
-    public void hello(HelloRequest request, StreamObserver<HelloResponse> responseObserver) {
+    public StreamObserver<HelloRequest> hello(StreamObserver<HelloResponse> responseObserver) {
+        return new StreamObserver<HelloRequest>() {
 
-        String greeting = new StringBuilder().append("hello, ").append(request.getFirstName()).append(" ").append(request.getLastName()).toString();
+            String all;
 
-        HelloResponse response = HelloResponse.newBuilder().setGreeting(greeting).build();
+            @Override
+            public void onNext(HelloRequest request) {
+                all += request.getFirstName() + " " + request.getLastName();
+            }
 
-        responseObserver.onNext(response);
-        responseObserver.onCompleted();
+            @Override
+            public void onError(Throwable t) {
+
+            }
+
+            @Override
+            public void onCompleted() {
+                responseObserver.onNext(HelloResponse.newBuilder().setGreeting(all).build());
+                responseObserver.onCompleted();
+            }
+        };
     }
 }

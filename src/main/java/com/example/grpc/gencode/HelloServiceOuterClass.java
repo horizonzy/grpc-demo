@@ -36,10 +36,10 @@ public final class HelloServiceOuterClass {
       "\n\022HelloService.proto\022\030com.example.grpc.g" +
       "encode\"3\n\014HelloRequest\022\021\n\tfirstName\030\001 \001(" +
       "\t\022\020\n\010lastName\030\002 \001(\t\"!\n\rHelloResponse\022\020\n\010" +
-      "greeting\030\001 \001(\t2h\n\014HelloService\022X\n\005hello\022" +
+      "greeting\030\001 \001(\t2j\n\014HelloService\022Z\n\005hello\022" +
       "&.com.example.grpc.gencode.HelloRequest\032" +
       "\'.com.example.grpc.gencode.HelloResponse" +
-      "B\002P\001b\006proto3"
+      "(\001B\002P\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
